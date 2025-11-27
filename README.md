@@ -1,8 +1,14 @@
 # g-slave
 
-A Claude Code slash command that dispatches Google's Gemini CLI as a subordinate analysis tool. Leverage Gemini's 1M token context window for large codebase analysis while keeping Claude's context clean.
+> **Claude commands. Gemini obeys. You win.**
 
-**The hierarchy is clear:** Claude commands, Gemini does the grunt work, you get distilled intel.
+A custom slash command for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that dispatches Google's Gemini CLI as a subordinate analysis tool.
+
+## What is this?
+
+This is a **Claude Code slash command** (`.md` file) that you install into your `~/.claude/commands/` directory. When you type `/g-slave` in Claude Code, it instructs Claude to invoke Gemini CLI for heavy-lifting analysis, then distill the results back to you.
+
+**Why a slash command?** Because you control when Gemini runs. Claude won't automatically delegate - only when you explicitly invoke `/g-slave`.
 
 ## Why?
 
@@ -24,7 +30,9 @@ which gemini
 
 ## Installation
 
-### Option 1: Global (all projects)
+### Option 1: Global (recommended)
+
+Install once, use across all projects:
 
 ```bash
 # Create Claude commands directory if it doesn't exist
@@ -41,6 +49,8 @@ curl -o ~/.claude/commands/g-slave.md https://raw.githubusercontent.com/0xDarkMa
 mkdir -p .claude/commands
 curl -o .claude/commands/g-slave.md https://raw.githubusercontent.com/0xDarkMatter/g-slave/main/g-slave.md
 ```
+
+After installation, the `/g-slave` command will be available in Claude Code.
 
 ## Usage
 
@@ -118,7 +128,7 @@ Target specific analysis areas:
 ## How It Works
 
 ```
-You (invoke /g-slave)
+You (invoke /g-slave in Claude Code)
     |
     v
 Claude (parses command, constructs Gemini prompt)
@@ -136,7 +146,7 @@ You (receive concise, actionable intel)
 ### Key Behaviors
 
 1. **Read-only enforcement** - All Gemini prompts include instructions to never execute code or modify files
-2. **Agent file detection** - Checks for AGENTS.md, GEMINI.md, CLAUDE.md, WARP.md, COPILOT.md, CURSOR.md, CODEX.md
+2. **Agent file detection** - Checks for AGENTS.md, GEMINI.md, CLAUDE.md, WARP.md, COPILOT.md, CURSOR.md, CODEX.md and suggests including them for context
 3. **Framework detection** - Tailors analysis based on detected stack (package.json, requirements.txt, Cargo.toml, etc.)
 4. **Smart exclusions** - Recommends excluding node_modules, .git, dist, vendor, etc.
 5. **Distillation by default** - Summarizes unless `--raw` is specified
@@ -190,16 +200,15 @@ Authentication is handled in `src/middleware/auth.js` using JWT tokens...
 **Location(s):** `src/routes/auth.js`, `src/middleware/rateLimit.js`
 ```
 
-## Configuration Tips
+## Project Context with AGENTS.md
 
-### Optimize with GEMINI.md
-
-Create a `GEMINI.md` in your project root for persistent Gemini instructions:
+For best results, maintain an `AGENTS.md` file in your project root with context that any AI tool can use:
 
 ```markdown
 # Project Context
 
-This is a Node.js/Express API with PostgreSQL.
+## Overview
+Node.js/Express API with PostgreSQL
 
 ## Key Directories
 - src/routes - API endpoints
@@ -209,21 +218,14 @@ This is a Node.js/Express API with PostgreSQL.
 ## Conventions
 - All routes require auth middleware except /public/*
 - Use async/await, not callbacks
-```
 
-Gemini CLI automatically reads this file.
-
-### Default Exclusions
-
-Add to your GEMINI.md to always exclude:
-
-```markdown
 ## Ignore
 - node_modules/
 - dist/
 - coverage/
-- *.log
 ```
+
+g-slave will detect this file and suggest including it in the Gemini prompt for better context.
 
 ## Troubleshooting
 
@@ -233,11 +235,7 @@ Add to your GEMINI.md to always exclude:
 | Analysis timeout | Use `--exclude` to reduce scope |
 | Rate limited | Wait or reduce analysis frequency |
 | Output too verbose | Use `--brief` flag |
-| Missing context | Ensure path is correct, check GEMINI.md |
-
-## Contributing
-
-PRs welcome. Keep the hierarchy intact.
+| Missing context | Ensure path is correct, add AGENTS.md |
 
 ## License
 
@@ -245,4 +243,4 @@ MIT
 
 ---
 
-*Claude commands. Gemini obeys. You win.*
+**Claude commands. Gemini obeys. You win.**
