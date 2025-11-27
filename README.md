@@ -2,7 +2,9 @@
 
 > **Claude commands. Gemini obeys. You win.**
 
-A custom slash command for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that dispatches Google's Gemini CLI as a subordinate analysis tool.
+A custom slash command for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that puts Gemini CLI to work as Claude's personal code analyst.
+
+Got a mass codebase? Let Gemini chew through it with its 1M token context window while Claude kicks back and waits for the summary. Why should Claude burn precious tokens on grunt work when Google's offering free labor? Gemini reads the whole damn repo, Claude extracts the insights, and you get the intel without the context bloat. It's delegation, but make it AI.
 
 ## What is this?
 
