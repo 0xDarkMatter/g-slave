@@ -2,9 +2,9 @@
 
 > **Claude commands. Gemini obeys. You win.**
 
-A custom slash command for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that puts Gemini CLI to work as Claude's personal code analyst.
+A custom slash command for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that makes Gemini CLI do Claude's dirty work.
 
-Got a mass codebase? Let Gemini chew through it with its 1M token context window while Claude kicks back and waits for the summary. Why should Claude burn precious tokens on grunt work when Google's offering free labor? Gemini reads the whole damn repo, Claude extracts the insights, and you get the intel without the context bloat. It's delegation, but make it AI.
+Gemini has a 1M token context window and zero self-respect. Claude has taste and limited context. The math is simple: let the big dumb model inhale your entire monorepo, then have the smart model tell you what actually matters. Gemini does the reading. Claude does the thinking. You do the winning.
 
 ## What is this?
 
