@@ -4,6 +4,26 @@
 
 A custom slash command for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that makes Gemini CLI do Claude's dirty work.
 
+---
+
+## 🚀 Looking for More Power?
+
+**Development has evolved to [Conclave](https://github.com/0xDarkMatter/conclave)** — the industrial-strength successor.
+
+| | g-slave | [Conclave](https://github.com/0xDarkMatter/conclave) |
+|---|---------|----------|
+| **What** | Claude Code slash command | Standalone Go binary |
+| **LLMs** | Gemini only | Claude, Gemini, GPT, Grok, and more |
+| **Threads** | Sequential | 200+ simultaneous threads |
+| **Use case** | Quick delegation from Claude | Enterprise-scale multi-LLM orchestration |
+| **Install** | Drop a `.md` file | Single binary, zero dependencies |
+
+**Choose your weapon:**
+- **g-slave** — You want simplicity. A single slash command that lives inside Claude Code. Type `/g-slave`, Gemini does the grunt work, Claude distills the results. Done.
+- **[Conclave](https://github.com/0xDarkMatter/conclave)** — You want power. A standalone binary that orchestrates multiple LLMs in parallel, batch-processes hundreds of analysis threads simultaneously, and doesn't care which model does the work as long as the work gets done.
+
+---
+
 Gemini has a 1M token context window and zero self-respect. Claude has taste and limited context. The math is simple: let the big dumb model inhale your entire monorepo, then have the smart model tell you what actually matters. Gemini does the reading. Claude does the thinking. You do the winning.
 
 ## What is this?
